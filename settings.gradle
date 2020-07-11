@@ -1,0 +1,2 @@
+rootProject.name='Disinfectan Remot Control'
+include ':app'

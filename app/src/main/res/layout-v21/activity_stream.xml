@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
+    tools:context=".StreamActivity">
+
+    <LinearLayout
+        android:layout_margin="32dp"
+        android:gravity="center_horizontal"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/lblHeader"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="48dp"
+            android:textSize="24sp"
+            android:text="@string/app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <androidx.cardview.widget.CardView
+            app:cardElevation="8dp"
+            app:cardPreventCornerOverlap="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="56dp"
+            app:cardBackgroundColor="#00BCD4"
+            app:cardCornerRadius="10dp"
+            android:padding="8dp"
+            android:id="@+id/cardMonitor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_margin="34dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="@string/stream_card_content"
+                    android:id="@+id/txtPh"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeMinTextSize="12sp"
+                    android:autoSizeMaxTextSize="76sp"
+                    android:autoSizeStepGranularity="2sp"
+                    tools:targetApi="o" />
+                <TextView
+                    android:textColor="@android:color/white"
+                    android:text="@string/stream_card_footer"
+                    android:textSize="16sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <Switch
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_gravity="left"
+            android:textSize="24sp"
+            android:id="@+id/swLamp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/stream_sw_stream"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="16dp"
+            tools:ignore="RtlHardcoded" />
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textColor="@android:color/black"
+                android:textSize="24sp"
+                android:text="@string/stream_lbl_feed"
+                android:layout_weight="2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp" />
+
+            <ImageButton
+                android:layout_marginRight="8dp"
+                android:backgroundTintMode="add"
+                android:backgroundTint="#00BCD4"
+                android:layout_gravity="right"
+                android:id="@+id/btnFeed"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                android:contentDescription="@string/stream_imgbtn_feed_desc"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/fish_food"
+                android:layout_marginEnd="8dp"
+                tools:ignore="RtlHardcoded" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignBottom="@+id/txtState"
+        android:contentDescription="@string/stream_fab_desc"
+        app:srcCompat="@drawable/back"/>
+
+    <TextView
+        android:gravity="center"
+        android:layout_marginBottom="24dp"
+        android:text="@string/stream_lbl_connectionstate"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/txtState"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+</RelativeLayout>
