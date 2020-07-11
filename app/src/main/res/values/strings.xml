@@ -16,4 +16,5 @@
     <string name="stream_imgbtn_feed_desc">Feed Fish</string>
     <string name="connect_credit_title">Created using Android Studio!</string>
     <string name="connect_card_header">Login First</string>
+    <string name="splash_img_desc">Logo</string>
 </resources>
