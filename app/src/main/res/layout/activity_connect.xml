@@ -2,8 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
-    android:background="@color/backgroundColor"
+    android:id="@+id/containerConnect"
+    android:background="@drawable/animation_list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -28,7 +28,7 @@
         android:layout_marginRight="24dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/colorPrimaryDark">
+        app:cardBackgroundColor="@android:color/white">
 
         <LinearLayout
             android:layout_marginTop="36dp"
@@ -63,8 +63,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/connect_txt_hwid"
-                android:textColorHint="@android:color/white"
-                app:hintTextColor="@android:color/white">
+                android:textColorHint="@android:color/black"
+                app:hintTextColor="@android:color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtUniqueid"
@@ -80,8 +80,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/connect_txt_hwkey"
-                android:textColorHint="@android:color/white"
-                app:hintTextColor="@android:color/white">
+                android:textColorHint="@android:color/black"
+                app:hintTextColor="@android:color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtUniquekey"
@@ -91,7 +91,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <CheckBox
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:id="@+id/ccbRemember"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

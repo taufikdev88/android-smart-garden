@@ -3,6 +3,7 @@ package com.example.fishfeeder;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +40,9 @@ public class ConnectActivity extends AppCompatActivity {
     CheckBox ccbRemember;
     TextView txtChangeServer;
 
+    RelativeLayout mainLayout;
+    AnimationDrawable animationDrawable;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +53,11 @@ public class ConnectActivity extends AppCompatActivity {
         btnConnent = findViewById(R.id.btnConnect);
         ccbRemember = findViewById(R.id.ccbRemember);
         txtChangeServer = findViewById(R.id.txtChangeServer);
+
+        mainLayout = findViewById(R.id.containerConnect);
+        animationDrawable = (AnimationDrawable) mainLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(2000);
+        animationDrawable.setExitFadeDuration(1000);
 
         btnConnent.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,6 +147,24 @@ public class ConnectActivity extends AppCompatActivity {
         });
 
         checkIniFile();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        if(animationDrawable != null && animationDrawable.isRunning()){
+            animationDrawable.stop();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if(animationDrawable != null && !animationDrawable.isRunning()){
+            animationDrawable.start();
+        }
     }
 
     private void checkIniFile() {

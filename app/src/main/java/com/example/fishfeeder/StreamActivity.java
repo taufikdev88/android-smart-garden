@@ -3,6 +3,7 @@ package com.example.fishfeeder;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -53,6 +54,7 @@ public class StreamActivity extends AppCompatActivity {
     FloatingActionButton fabBack;
     ConstraintLayout layoutMenu, layoutPh, layoutLamp, layoutfeed;
     ImageView imgFeed, imgLamp;
+    AnimationDrawable animationDrawable;
 
     private void createWebSocketClient(){
         URI uri;
@@ -169,6 +171,10 @@ public class StreamActivity extends AppCompatActivity {
         imgFeed = findViewById(R.id.imgFeed);
         imgLamp = findViewById(R.id.imgLamp);
 
+        animationDrawable = (AnimationDrawable) layoutMenu.getBackground();
+        animationDrawable.setEnterFadeDuration(2000);
+        animationDrawable.setExitFadeDuration(1000);
+
         fabBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -271,6 +277,24 @@ public class StreamActivity extends AppCompatActivity {
         webSocket.sendText(wsCommand.toString());
         if(webSocket.isOpen()) webSocket.disconnect();
         super.onDestroy();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        if(animationDrawable != null && animationDrawable.isRunning()){
+            animationDrawable.stop();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if(animationDrawable != null && !animationDrawable.isRunning()){
+            animationDrawable.start();
+        }
     }
 
     @Override
