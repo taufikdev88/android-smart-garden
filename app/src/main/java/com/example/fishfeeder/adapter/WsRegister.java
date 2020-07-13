@@ -38,7 +38,7 @@ public class WsRegister {
             jsonObject.put("ishw", false);
             jsonObject.put("uniqueid", this.uniqueid);
             jsonObject.put("uniquekey", this.uniquekey);
-            return jsonObject.toString();
+            return jsonObject.toString(); // {"type": "register","ishw": false ....
         } catch (JSONException e){
             e.printStackTrace();
             return null;

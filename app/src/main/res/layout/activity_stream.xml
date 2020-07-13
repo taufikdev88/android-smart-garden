@@ -66,6 +66,7 @@
                     android:layout_height="wrap_content"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
+
         <Switch
             android:layout_marginRight="8dp"
             android:layout_marginBottom="16dp"

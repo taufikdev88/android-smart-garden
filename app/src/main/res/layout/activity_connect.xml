@@ -22,8 +22,10 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewConnect"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="96dp"
         app:cardCornerRadius="20dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="@color/colorPrimaryDark">
@@ -36,13 +38,24 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:textColor="@android:color/white"
-                android:gravity="center"
-                android:textSize="32sp"
-                android:text="@string/connect_card_header"
+            <LinearLayout
+                android:layout_marginBottom="26dp"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@drawable/back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+                <ImageView
+                    android:src="@drawable/back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+            </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_marginStart="24dp"

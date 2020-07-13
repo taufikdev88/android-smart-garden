@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Fish Feeder and PH Monitoring</string>
     <string name="command_stop">STOP FROM ANDROID</string>
-    <string name="connect_txt_hwid">HW ID</string>
-    <string name="connect_txt_hwkey">HW Key</string>
-    <string name="connect_btn_connect">Connect</string>
+    <string name="connect_txt_hwid">Username</string>
+    <string name="connect_txt_hwkey">Password</string>
+    <string name="connect_btn_connect">Login</string>
     <string name="connect_ccb_remember">Remember me !</string>
     <string name="connect_txt_changeserveraddress">Change Server Address ?</string>
     <string name="connect_edt_changeserveraddress">Server Address</string>

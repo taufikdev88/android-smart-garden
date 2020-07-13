@@ -1,13 +1,13 @@
 package com.example.fishfeeder;
 
 import android.annotation.SuppressLint;
-import android.app.Application;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.widget.TextViewCompat;
 
 import com.example.fishfeeder.adapter.WsCommand;
@@ -36,17 +37,19 @@ import java.util.Map;
 
 public class StreamActivity extends AppCompatActivity {
     WebSocket webSocket;
-    String server = "ws://192.168.42.193:8080";
+    String server = "ws://13.67.75.133:8080";
     private String wtState = "false";
 
     WsRegister wsRegister = new WsRegister("unik", "pass");
     WsCommand wsCommand = new WsCommand("F");
 
+    ImageButton btnLayoutPh, btnLayoutFeed, btnLayoutLamp;
     Switch swLamp;
-    ImageButton btnFeed;
+    Button btnFeed;
     TextView txtPh;
     TextView txtState;
     FloatingActionButton fabBack;
+    ConstraintLayout layoutMenu, layoutPh, layoutLamp, layoutfeed;
 
     private void createWebSocketClient(){
         URI uri;
@@ -143,7 +146,7 @@ public class StreamActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_stream);
+        setContentView(R.layout.activity_stream_wrapper);
 
         txtPh = findViewById(R.id.txtPh);
         TextViewCompat.setAutoSizeTextTypeWithDefaults(txtPh, TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
@@ -151,28 +154,73 @@ public class StreamActivity extends AppCompatActivity {
         swLamp = findViewById(R.id.swLamp);
         btnFeed = findViewById(R.id.btnFeed);
         fabBack = findViewById(R.id.fabBack);
+        layoutMenu = findViewById(R.id.layout_home);
+        layoutPh = findViewById(R.id.layout_ph);
+        layoutfeed = findViewById(R.id.layout_feed);
+        layoutLamp = findViewById(R.id.layout_lamp);
+        btnLayoutFeed = findViewById(R.id.btnOpenFeed);
+        btnLayoutLamp = findViewById(R.id.btnOpenLamp);
+        btnLayoutPh = findViewById(R.id.btnOpenPH);
 
         fabBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final AlertDialog.Builder builder = new AlertDialog.Builder(StreamActivity.this);
-                builder.setMessage("Do yout want to end session ?")
-                        .setTitle("Confirm Exit");
-                builder.setPositiveButton("Yes, I do", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        finish();
-                    }
-                });
-                builder.setNegativeButton("No, I Don't", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-                AlertDialog dialog = builder.create();
-                dialog.show();
+                if(layoutMenu.getVisibility() == View.GONE){
+                    layoutMenu.setVisibility(View.VISIBLE);
+                    layoutfeed.setVisibility(View.GONE);
+                    layoutLamp.setVisibility(View.GONE);
+                    layoutPh.setVisibility(View.GONE);
+                } else {
+                    final AlertDialog.Builder builder = new AlertDialog.Builder(StreamActivity.this);
+                    builder.setMessage("Do yout want to end session ?")
+                            .setTitle("Confirm Exit");
+                    builder.setPositiveButton("Yes, I do", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            StreamActivity.super.onBackPressed();
+                            finish();
+                        }
+                    });
+                    builder.setNegativeButton("No, I Don't", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
+            }
+        });
+
+        btnLayoutPh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                layoutMenu.setVisibility(View.GONE);
+                layoutfeed.setVisibility(View.GONE);
+                layoutLamp.setVisibility(View.GONE);
+                layoutPh.setVisibility(View.VISIBLE);
+            }
+        });
+
+        btnLayoutLamp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                layoutMenu.setVisibility(View.GONE);
+                layoutfeed.setVisibility(View.GONE);
+                layoutLamp.setVisibility(View.VISIBLE);
+                layoutPh.setVisibility(View.GONE);
+            }
+        });
+
+        btnLayoutFeed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                layoutMenu.setVisibility(View.GONE);
+                layoutfeed.setVisibility(View.VISIBLE);
+                layoutLamp.setVisibility(View.GONE);
+                layoutPh.setVisibility(View.GONE);
             }
         });
 
