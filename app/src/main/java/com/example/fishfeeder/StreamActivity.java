@@ -3,12 +3,14 @@ package com.example.fishfeeder;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -50,6 +52,7 @@ public class StreamActivity extends AppCompatActivity {
     TextView txtState;
     FloatingActionButton fabBack;
     ConstraintLayout layoutMenu, layoutPh, layoutLamp, layoutfeed;
+    ImageView imgFeed, imgLamp;
 
     private void createWebSocketClient(){
         URI uri;
@@ -102,8 +105,10 @@ public class StreamActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 if(wtState.equals("true")){
+                                    imgLamp.setImageResource(R.drawable.fish_food);
                                     swLamp.setChecked(true);
                                 } else {
+                                    imgLamp.setImageResource(R.drawable.back);
                                     swLamp.setChecked(false);
                                 }
                             }
@@ -161,6 +166,8 @@ public class StreamActivity extends AppCompatActivity {
         btnLayoutFeed = findViewById(R.id.btnOpenFeed);
         btnLayoutLamp = findViewById(R.id.btnOpenLamp);
         btnLayoutPh = findViewById(R.id.btnOpenPH);
+        imgFeed = findViewById(R.id.imgFeed);
+        imgLamp = findViewById(R.id.imgLamp);
 
         fabBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -236,15 +243,13 @@ public class StreamActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
-                    btnFeed.setTranslationX((float) 3.0);
-                    btnFeed.setTranslationY((float) 3.0);
+                    imgFeed.setImageResource(R.drawable.fish_food);
                     wsCommand.setCommand("FEED");
                     webSocket.sendText(wsCommand.toString());
                     return true;
                 }
                 if(event.getAction() == MotionEvent.ACTION_UP){
-                    btnFeed.setTranslationX((float) -3.0);
-                    btnFeed.setTranslationY((float) -3.0);
+                    imgFeed.setImageResource(R.drawable.back);
                 }
                 return false;
             }
