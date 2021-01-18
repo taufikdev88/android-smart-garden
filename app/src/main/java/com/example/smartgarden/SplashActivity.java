@@ -1,4 +1,4 @@
-package com.example.fishfeeder;
+package com.example.smartgarden;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;

@@ -1,4 +1,4 @@
-package com.example.fishfeeder;
+package com.example.smartgarden;
 
 import android.content.Context;
 

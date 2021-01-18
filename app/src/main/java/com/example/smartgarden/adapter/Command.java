@@ -1,15 +1,17 @@
-package com.example.fishfeeder.adapter;
+package com.example.smartgarden.adapter;
 
 import androidx.annotation.NonNull;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class WsCommand {
+public class Command {
     private String command;
+    private String id;
+    private String key;
 
-    public WsCommand(String _command){
-        this.command = _command;
+    public Command(){
+        this.command = "";
     }
 
     public String getCommand() {
@@ -24,12 +26,29 @@ public class WsCommand {
     public String toString(){
         try {
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("type", "command");
             jsonObject.put("command", this.command);
+            jsonObject.put("id", this.id);
+            jsonObject.put("key", this.key);
             return jsonObject.toString();
         } catch (JSONException e){
             e.printStackTrace();
             return null;
         }
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

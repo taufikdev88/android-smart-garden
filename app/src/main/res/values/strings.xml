@@ -1,20 +1,12 @@
 <resources>
-    <string name="app_name">Fish Feeder and PH Monitoring</string>
-    <string name="command_stop">STOP FROM ANDROID</string>
+    <string name="app_name">Smart Garden</string>
+    <string name="splash_img_desc">Logo</string>
     <string name="connect_txt_hwid">Username</string>
     <string name="connect_txt_hwkey">Password</string>
     <string name="connect_btn_connect">Login</string>
     <string name="connect_ccb_remember">Remember me !</string>
     <string name="connect_txt_changeserveraddress">Change Server Address ?</string>
     <string name="connect_edt_changeserveraddress">Server Address</string>
-    <string name="stream_card_footer">PH Monitored</string>
-    <string name="stream_card_content">45</string>
-    <string name="stream_sw_stream">Switch Lamp</string>
-    <string name="stream_lbl_feed">Feed</string>
-    <string name="stream_lbl_connectionstate">Connection State</string>
-    <string name="stream_fab_desc">Back</string>
-    <string name="stream_imgbtn_feed_desc">Feed Fish</string>
-    <string name="connect_credit_title">Created using Android Studio!</string>
-    <string name="connect_card_header">Login First</string>
-    <string name="splash_img_desc">Logo</string>
+    <string name="stream_txt_information">Information</string>
+    <string name="main_edt_server">Server Address</string>
 </resources>
